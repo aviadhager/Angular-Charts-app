@@ -30,17 +30,17 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Enterprise Dev/Test (f9351b18-5920-4faa-8992-1dfd3ae0390a)'
-    appType: 'webAppContainer'
-    WebAppName: 'chartsapp'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'angularchartappregistry'
-    SlotName: 'production'
-    DockerNamespace: 'angularchartappregistry'
-    DockerRepository: 'chartapp'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Enterprise Dev/Test (f9351b18-5920-4faa-8992-1dfd3ae0390a)'
+        appType: 'webAppContainer'
+        WebAppName: 'chartsapp'
+        deployToSlotOrASE: true
+        ResourceGroupName: 'angularchartappregistry'
+        SlotName: 'production'
+        DockerNamespace: 'angularchartappregistry'
+        DockerRepository: 'chartapp'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
